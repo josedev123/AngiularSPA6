@@ -9,6 +9,11 @@ export class CreateComponent implements OnInit {
 
   constructor() { }
 
+submit(f) {
+  console.log(f.value)
+}
+
+
   ngOnInit() {
   }
 
