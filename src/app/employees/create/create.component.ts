@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -7,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+private url = "https://localhost:44302/";
 
-submit(f) {
-  console.log(f.value)
+
+  constructor(private httpClient: HttpClient, private router: Router) { }
+
+create(fields) {
+  console.log(fields.value)
+  let post = fields.value;
+  this.httpClient.post(this.url + "employee/create", post)
+    .subscribe(response => {
+      console.log(response);
+      var employee: any = response;
+      post.id = employee.id;
+      this.router.navigate(['/employees/view/' + post.id]);
+    });
 }
 
 
