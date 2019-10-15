@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class ViewComponent implements OnInit {
   private routeSub: Subscription;
   id: number;
-  employee:any;
+  employee: any;
   constructor(private route: ActivatedRoute, private httpClient: HttpClient) { }
 
   ngOnInit() {
@@ -21,7 +21,7 @@ export class ViewComponent implements OnInit {
         this.id = params.id;
 
        });
-       this.httpClient.get('https://localhost:44302/employee/details/' + this.id)
+      this.httpClient.get('https://localhost:44302/employee/details/' + this.id)
        .subscribe(response => {
          this.employee = response;
        });

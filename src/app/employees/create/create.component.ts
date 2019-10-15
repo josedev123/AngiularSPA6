@@ -9,18 +9,18 @@ import { Router } from '@angular/router';
 })
 export class CreateComponent implements OnInit {
 
-private url = "https://localhost:44302/";
+private url = 'https://localhost:44302/';
 
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
 create(fields) {
-  console.log(fields.value)
-  let post = fields.value;
-  this.httpClient.post(this.url + "employee/create", post)
+  console.log(fields.value);
+  const post = fields.value;
+  this.httpClient.post(this.url + 'employee/create', post)
     .subscribe(response => {
       console.log(response);
-      var employee: any = response;
+      const employee: any = response;
       post.id = employee.id;
       this.router.navigate(['/employees/view/' + post.id]);
     });
